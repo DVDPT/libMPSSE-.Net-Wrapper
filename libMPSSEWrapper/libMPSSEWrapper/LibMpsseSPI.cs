@@ -10,6 +10,7 @@ namespace libMPSSEWrapper
     public class LibMpsseSpi
     {
 
+
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
         public extern static FtResult SPI_OpenChannel(int index, out IntPtr handle);
 
@@ -23,44 +24,38 @@ namespace libMPSSEWrapper
         public extern static FtResult SPI_GetChannelInfo(int index, out FtDeviceInfo chanInfo);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public extern static FtResult SPI_InitChannel(IntPtr handle, ref FtChannelInfo config);
+        public extern static FtResult SPI_InitChannel(IntPtr handle, ref FtChannelConfig config);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public extern static FtResult SPI_ChangeCS(IntPtr handle, int configOptions);
+        public extern static FtResult SPI_ChangeCS(IntPtr handle, FtConfigOptions configOptions);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
         public extern static FtResult SPI_IsBusy(IntPtr handle, out bool state);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public extern static int SPI_Read(
+        public extern static FtResult SPI_Read(
             IntPtr handle,
             byte[] buffer,
             int sizeToTransfer,
             out int sizeTransfered,
-            int options);
-
-        /*
-         FTDI_API FT_STATUS SPI_Write(FT_HANDLE handle, uint8 *buffer, 	uint32 sizeToTransfer, uint32 *sizeTransfered, uint32 options);
-         * 
-FTDI_API FT_STATUS SPI_ReadWrite(FT_HANDLE handle, uint8 *inBuffer, 	uint8 *outBuffer, uint32 sizeToTransfer, uint32 *sizeTransferred, 	uint32 transferOptions);
-         */
+            FtSpiTransferOptions options);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public extern static int SPI_ReadWrite(
+        public extern static FtResult SPI_ReadWrite(
             IntPtr handle,
             byte[] inBuffer,
             byte[] outBuffer,
             int sizeToTransfer,
             out int sizeTransferred,
-            int transferOptions);
+            FtSpiTransferOptions transferOptions);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public extern static int SPI_Write(
+        public extern static FtResult SPI_Write(
             IntPtr handle,
             byte[] buffer,
             int sizeToTransfer,
             out int sizeTransfered,
-            int options);
+            FtSpiTransferOptions options);
 
     }
 }

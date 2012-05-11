@@ -40,12 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\SpiChannelNotConnectedException.cs" />
     <Compile Include="LibMpsse.cs" />
     <Compile Include="LibMpsseSPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\FtChannelInfo.cs" />
+    <Compile Include="Spi\SpiConfiguration.cs" />
+    <Compile Include="Spi\SpiDevice.cs" />
+    <Compile Include="Types\FtChannelConfig.cs" />
+    <Compile Include="Types\FtConfigOptions.cs" />
     <Compile Include="Types\FtDeviceInfo.cs" />
     <Compile Include="Types\FtResult.cs" />
+    <Compile Include="Types\FtSpiTransferOptions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
