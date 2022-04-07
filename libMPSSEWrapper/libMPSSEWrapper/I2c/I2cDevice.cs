@@ -33,7 +33,6 @@ namespace libMPSSEWrapper.I2c
             if (_handle != IntPtr.Zero)
                 return;
 
-
             LibMpsse.Init();
             result = LibMpsseI2c.I2C_OpenChannel(_ftI2CConfig.ChannelIndex, out _handle);
 
@@ -47,7 +46,6 @@ namespace libMPSSEWrapper.I2c
             CheckResult(result);
 
             _currentGlobalConfig = _cfg;
-
         }
 
         protected FtResult DeviceWrite(int deviceAddress, byte[] buffer, int sizeToTransfer, out int sizeTransfered, FtI2cTransferOptions options)
@@ -62,16 +60,6 @@ namespace libMPSSEWrapper.I2c
             return DeviceWrite(deviceAddress, buffer, buffer.Length, out sizeTransfered, options);
         }
 
-        /*protected FtResult Write(int deviceAddress, byte[] buffer, int sizeToTransfer, out int sizeTransfered)
-        {
-            return Write(deviceAddress, buffer, sizeToTransfer, out sizeTransfered, FtI2cTransferOptions.ToogleChipSelect);
-        }
-
-        protected FtResult Write(int deviceAddress, byte[] buffer, out int sizeTransfered)
-        {
-            return Write(deviceAddress, buffer, out sizeTransfered, FtI2cTransferOptions.ToogleChipSelect);
-        }*/
-
         protected FtResult DeviceRead(int deviceAddress, byte[] buffer, int sizeToTransfer, out int sizeTransfered, FtI2cTransferOptions options)
         {
             EnforceRightConfiguration();
@@ -83,17 +71,6 @@ namespace libMPSSEWrapper.I2c
             return DeviceRead(deviceAddress, buffer, buffer.Length, out sizeTransfered, options);
         }
 
-        /*protected FtResult Read(int deviceAddress, byte[] buffer, int sizeToTransfer, out int sizeTransfered)
-        {
-            return Read(deviceAddress, buffer, buffer.Length, out sizeTransfered, FtSpiTransferOptions.ToogleChipSelect);
-        }
-
-        protected FtResult Read(int deviceAddress, byte[] buffer, out int sizeTransfered)
-        {
-            return Read(deviceAddress, buffer, out sizeTransfered, FtSpiTransferOptions.ToogleChipSelect);
-        }*/
-
-
         protected static void CheckResult(FtResult result)
         {
             if (result != FtResult.Ok)
@@ -104,12 +81,10 @@ namespace libMPSSEWrapper.I2c
         {
             if (_currentGlobalConfig.configOptions != _cfg.configOptions)
             {
-                //LibMpsseSpi.SPI_ChangeCS(_handle, _cfg.configOptions);
                 _currentGlobalConfig = _cfg;
             }
         }
-
-
+        
         public void Dispose()
         {
             if (_isDisposed)
