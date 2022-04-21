@@ -58,12 +58,12 @@ namespace Test
         }
 
 
-        public Maxim186(Maxim186Configuration adcConfig, FtChannelConfig config)
+        public Maxim186(Maxim186Configuration adcConfig, FtSpiChannelConfig config)
             : this(adcConfig, config, null)
         {
         }
 
-        public Maxim186(Maxim186Configuration adcConfig, FtChannelConfig config, SpiConfiguration spiConfig)
+        public Maxim186(Maxim186Configuration adcConfig, FtSpiChannelConfig config, SpiConfiguration spiConfig)
             : base(config, spiConfig)
         {
             _adcConfig = adcConfig;

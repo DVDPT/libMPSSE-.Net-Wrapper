@@ -24,7 +24,7 @@ namespace libMPSSEWrapper
         public extern static FtResult SPI_GetChannelInfo(int index, out FtDeviceInfo chanInfo);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public extern static FtResult SPI_InitChannel(IntPtr handle, ref FtChannelConfig config);
+        public extern static FtResult SPI_InitChannel(IntPtr handle, ref FtSpiChannelConfig config);
 
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
         public extern static FtResult SPI_ChangeCS(IntPtr handle, FtConfigOptions configOptions);

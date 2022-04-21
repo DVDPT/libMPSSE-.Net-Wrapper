@@ -10,20 +10,20 @@ namespace libMPSSEWrapper.Spi
     public abstract class SpiDevice : IDisposable
     {
         private static IntPtr _handle = IntPtr.Zero;
-        private static FtChannelConfig _currentGlobalConfig;
+        private static FtSpiChannelConfig _currentGlobalConfig;
 
-        private FtChannelConfig _cfg;
+        private FtSpiChannelConfig _cfg;
 
         private bool _isDisposed;
         private SpiConfiguration _spiConfig;
 
-        protected SpiDevice(FtChannelConfig config)
+        protected SpiDevice(FtSpiChannelConfig config)
             : this(config, null)
         {
 
         }
 
-        protected SpiDevice(FtChannelConfig config, SpiConfiguration spiConfig)
+        protected SpiDevice(FtSpiChannelConfig config, SpiConfiguration spiConfig)
         {
             _spiConfig = spiConfig ?? SpiConfiguration.ChannelZeroConfiguration;
             _cfg = config;

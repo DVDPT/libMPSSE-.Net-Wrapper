@@ -7,7 +7,7 @@ using System.Text;
 namespace libMPSSEWrapper.Types
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct FtChannelConfig
+    public struct FtSpiChannelConfig
     {
         public int ClockRate;
         public byte LatencyTimer;
